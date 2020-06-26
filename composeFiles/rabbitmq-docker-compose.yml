@@ -1,0 +1,29 @@
+version: "3"
+
+services:
+  rabbitmq:
+    image: 'rabbitmq:3.8'
+    ports:
+        - 5672:5672
+    networks:
+        - microservicenetwork
+    volumes:
+        - data:/var/lib/rabbitmq
+     
+  rabbitmanagement:
+    image: 'rabbitmq:3.7.24-management'
+    environment:
+        - RABBITMQ_DEFAULT_USER=admin
+        - RABBITMQ_DEFAULT_PASS=ENTERPASSWORD
+    ports:
+        - 15672:15672
+    networks:
+        - microservicenetwork
+
+networks:
+    microservicenetwork:
+        external: true
+
+volumes:
+    data:
+        driver: local

@@ -1,0 +1,21 @@
+version: '3.3'
+services:
+ sqlserver:
+  image: microsoft/mssql-server-linux:2017-latest
+  ports:
+    - 1433:1433
+  networks:
+    - microservicenetwork
+  environment:
+    - SA_PASSWORD=ENTERPASSWORD
+    - ACCEPT_EULA=Y
+  volumes:
+    - data:/var/opt/mssql/data
+
+networks:
+  microservicenetwork:
+    external: true
+
+volumes:
+    data:
+        driver: local

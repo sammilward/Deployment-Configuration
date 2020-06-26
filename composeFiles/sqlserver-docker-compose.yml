@@ -1,0 +1,17 @@
+version: "3"
+services:
+    sqlserver:
+        image: "mcr.microsoft.com/mssql/server:2017-latest"
+        environment:
+            SA_PASSWORD: "ENTERPASSWORD"
+            ACCEPT_EULA: "Y"
+        ports:
+          - "9939:1433"
+        hostname: "sqlserver"
+        volumes:
+          - sqlserver_data:/var/opt/mssql
+          
+volumes:
+  sqlserver_data:
+
+
